@@ -1,10 +1,14 @@
-import matplotlib.pyplot as plt
-import uuid
 import os
+import uuid
+import matplotlib.pyplot as plt
 
 def generate_plot(voltages, times):
-    filename = f"static/plot_{uuid.uuid4().hex}.png"
-    full_path = os.path.join("app", filename)
+    # Adjust path to your static folder
+    static_folder = os.path.join("app", "AestheticData")
+    os.makedirs(static_folder, exist_ok=True)
+
+    filename = f"plot_{uuid.uuid4().hex}.png"
+    full_path = os.path.join(static_folder, filename)
 
     plt.figure()
     plt.plot(times, voltages, marker='o')
@@ -15,4 +19,5 @@ def generate_plot(voltages, times):
     plt.savefig(full_path)
     plt.close()
 
-    return '/' + filename  # for use in HTML
+    # Return URL for the image in your template
+    return f"/AestheticData/{filename}"

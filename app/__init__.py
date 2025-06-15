@@ -1,8 +1,7 @@
 from flask import Flask
 
 def create_app():
-    app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'change_this_secret'
+    app = Flask(__name__, static_folder="AestheticData")
 
     from .routes import main
     app.register_blueprint(main)

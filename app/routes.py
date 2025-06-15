@@ -4,7 +4,6 @@ from circuits.capacitor import Capacitor
 from circuits.inductor import Inductor
 from simulations.dc_analysis import calculate_series_voltage
 from plots.plot_voltage import generate_plot
-
 main = Blueprint('main', __name__)
 
 @main.route('/', methods=['GET', 'POST'])
