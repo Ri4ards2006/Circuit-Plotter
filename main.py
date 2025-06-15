@@ -1,6 +1,6 @@
-from circuits.resistor import Resistor
-from circuits.capacitor import Capacitor
-from circuits.inductor import Inductor
+from app import Resistor
+from app import Capacitor
+from app import Inductor
 from simulations.ac_analysis import calculate_series_voltage
 from plots.plot_voltage import plot_voltage_over_time
 
