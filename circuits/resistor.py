@@ -1,6 +1,6 @@
 class Resistor:
-    def __init__(self, resistance_ohm):
-        self.resistance = resistance_ohm
+    def __init__(self, resistance):
+        self.resistance = resistance  # Widerstand in Ohm
 
-    def voltage(self, current_amps):
-        return self.resistance * current_amps
+    def get_impedance(self, frequency):
+        return complex(self.resistance, 0)  # Impedanz ist reell (Widerstand, kein Phasenwinkel)

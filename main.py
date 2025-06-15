@@ -1,19 +1,25 @@
 from circuits.resistor import Resistor
-from simulations.dc_analysis import calculate_series_voltage
+from circuits.capacitor import Capacitor
+from circuits.inductor import Inductor
+from simulations.ac_analysis import calculate_series_voltage
 from plots.plot_voltage import plot_voltage_over_time
 
 r1 = Resistor(100)
-r2 = Resistor(150)
+c1 = Capacitor(1e-6)  # 1 uF
+l1 = Inductor(1e-3)   # 1 mH
 
 strom = 0.02  # 20 mA
 
-spannung = calculate_series_voltage([r1, r2], strom)
+frequency = 50  # 50 Hz Wechselstrom
 
-print(f"Gesamtspannung: {spannung:.2f} V")
+spannung = calculate_series_voltage([r1, c1, l1], strom, frequency)
 
-# Plotten
+print(f"Gesamtspannung : {spannung.real:.2f} V (Realteil)")
 
+# Zeitwerte für Plot
 zeiten = [0, 1, 2, 3, 4]
-spannungen = [spannung * t / 4 for t in zeiten]
+
+# Spannung linear über Zeit (Realteil)
+spannungen = [spannung.real * t / 4 for t in zeiten]
 
 plot_voltage_over_time(spannungen, zeiten)
