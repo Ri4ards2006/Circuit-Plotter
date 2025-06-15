@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>eCircuits Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <h1>🔌 eCircuits Web Interface</h1>
+    <form method="POST">
+        <label>Resistor (Ω):</label>
+        <input name="resistor" value="100"><br>
 
+        <label>Capacitor (F):</label>
+        <input name="capacitor" value="1e-6"><br>
+
+        <label>Inductor (H):</label>
+        <input name="inductor" value="0.01"><br>
+
+        <label>Current (A):</label>
+        <input name="current" value="0.02"><br>
+
+        <button type="submit">Simulate</button>
+    </form>
+
+    {% if result %}
+        <h2>Voltage: {{ result }}</h2>
+    {% endif %}
+
+    {% if plot_url %}
+        <img src="{{ plot_url }}" alt="Voltage Plot">
+    {% endif %}
 </body>
 </html>
